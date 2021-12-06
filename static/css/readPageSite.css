@@ -1,0 +1,152 @@
+:root {
+    /* Biến toàn cục, đặt tên để sau dấu -- */
+    --text-color: #fff;
+    --sidebar-bg: #001e32;
+    --sidebar-hover-bg: #001626;
+    --sidebar-font-color: #fff;
+    --content-layout-bg: #004270;
+    --content-story-bg: #001f34;
+    --scrollbar-color: #003b64;
+    --content-tab-bg: #0061a7;
+    --content-tab-nav-bg: #00385e;
+    --content-tab-nav-hover: #00508b;
+    --content-tab-nav-active: #0061a7;
+    --content-font-color: #fff;
+    --text-font: Arial, Helvetica, sans-serif;
+}
+
+/* reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--text-font);
+    color: var(--text-color);
+}
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+#content-layout {
+    width: calc(100vw - 60px);
+    height: 100vh;
+    background-color: var(--content-layout-bg);
+    position: absolute;
+    left: 60px;
+    display: flex;
+}
+
+#content {
+    width: 1200px;
+    height: 550px;
+    margin: auto;
+    display: flex;
+}
+
+#content-story {
+    background-color: var(--content-story-bg);
+    flex-basis: 65%;
+}
+
+#content-story>div {
+    height: 90px;
+    display: flex;
+}
+
+#content-story>div>h2 {
+    margin: auto;
+    font-size: 30px;
+    padding: 0px 50px 0px;
+}
+
+#content-story>p {
+    height: 420px;
+    font-size: 30px;
+    margin: 10px 15px 30px 30px;
+    padding-right: 15px;
+    overflow: auto;
+}
+
+#content-story>p::-webkit-scrollbar,
+#content-tab-body>ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+#content-story>p::-webkit-scrollbar-track,
+#content-tab-body>ul::-webkit-scrollbar-track {
+    background: none;
+}
+
+#content-story>p::-webkit-scrollbar-thumb,
+#content-tab-body>ul::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 10px;
+}
+
+#content-tab {
+    background-color: var(--content-tab-bg);
+    flex-basis: 35%;
+    position: relative;
+}
+
+#content-tab-nav ul {
+    position: absolute;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+}
+
+#content-tab-nav ul button {
+    flex-basis: calc(100%/3);
+    background-color: var(--content-tab-nav-bg);
+    color: var(--content-font-color);
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+}
+
+#content-tab-nav ul button:hover {
+    background-color: var(--content-tab-nav-hover);
+}
+
+#content-tab-nav ul button.active {
+    background-color: var(--content-tab-nav-active);
+}
+
+#content-tab-body>ul {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    width: calc(100%-60px);
+    height: 460px;
+    overflow: auto;
+    margin: 60px 15px 30px 30px;
+    padding-right: 15px;
+    z-index: 1;
+    font-size: 25px;
+}
+
+#content-tab-body #body-idiom {
+    display: flex;
+}
+
+#content-tab-body #body-idiom>div {
+    margin: auto;
+}
+
+#content-tab-body .vocabulary-word {
+    font-size: 30px;
+}
+
+#content-tab-body .vocabulary-meaning {
+    font-size: 25px;
+}

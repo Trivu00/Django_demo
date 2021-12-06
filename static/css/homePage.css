@@ -1,0 +1,263 @@
+:root {
+    /* Biến toàn cục, đặt tên để sau dấu -- */
+    --text-color: #fff;
+    --sidebar-bg: #001e32;
+    --sidebar-hover-bg: #001626;
+    --sidebar-font-color: #fff;
+    --content-layout-bg: #004270;
+    --content-item-bg: #0061a7;
+    --content-item-hover-bg: #00538f;
+    --scrollbar-color: #005b9b;
+    --content-font-color: #fff;
+    --text-font: Arial, Helvetica, sans-serif;
+    --border: 10px;
+}
+
+
+/* reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--text-font);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+    width: 0.6vw;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--content-layout-bg);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 10px;
+}
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+#sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    z-index: 10;
+    /* đưa thành phần sang lớp thứ 10 */
+}
+
+#sidebar:hover {
+    width: 300px;
+}
+
+#sidebar-menu>li {
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#sidebar-menu>li:hover {
+    background-color: var(--sidebar-hover-bg);
+}
+
+#sidebar-menu>li a {
+    color: var(--sidebar-font-color);
+    line-height: 60px;
+    font-size: 30px;
+    padding: 15px;
+    text-decoration: none;
+}
+
+#sidebar-menu>li label {
+    display: none;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+#sidebar:hover #sidebar-menu>li label {
+    display: inline;
+}
+
+#content {
+    position: absolute;
+    left: 60px;
+    width: calc(100vw - 60px);
+    background-color: var(--content-layout-bg);
+}
+
+#content #content-info {
+    max-width: 90vw;
+    padding: 32px;
+    margin: 2vw auto 0 auto;
+    background-color: var(--content-item-bg);
+    color: var(--content-font-color);
+    border-radius: var(--border);
+}
+
+#content #content-info h1 {
+    padding-bottom: 20px;
+}
+
+#content #content-info p {
+    padding-left: 10px;
+    font-size: 25px;
+}
+
+#content #content-top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.content-top-item {
+    margin-top: 2vw;
+    padding: 12px 16px;
+    flex-basis: 43%;
+}
+
+#content #userInfo {
+    padding: 30px 30px 10px;
+    background-color: var(--content-item-bg);
+    color: var(--content-font-color);
+    border-radius: var(--border);
+}
+
+#content #userInfo .item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#content #userInfo .user-info-item {
+    padding: 15px;
+    flex-basis: 30%;
+}
+
+#content #userInfo .item-container .p1 {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+#content #userInfo .item-container .p2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#content #idiom {
+    padding: 30px 30px 20px;
+    background-color: var(--content-item-bg);
+    color: var(--content-font-color);
+    border-radius: var(--border);
+}
+
+#content #idiom .idiom-idiom {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+#content #idiom .idiom-meaning {
+    font-size: large;
+    padding: 10px;
+}
+
+#content-main {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#content .lesson {
+    margin-top: 2vw;
+    flex-basis: 30%;
+    background-color: var(--content-item-bg);
+    border-radius: var(--border);
+}
+
+#content .lesson a {
+    text-decoration: none;
+    color: var(--content-font-color);
+}
+
+#content .lesson:hover {
+    background-color: var(--content-item-hover-bg);
+}
+
+#content .lesson h2 {
+    padding: 15px 20px 0px;
+    font-size: 1.5em;
+}
+
+#content .lesson p {
+    padding: 15px 30px 15px;
+}
+
+#content-bot {
+    padding: 1vw;
+}
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+.buttons {
+    top: 36px;
+    position: relative
+}
+
+.rating-submit {
+    border-radius: 15px;
+    color: #fff;
+    height: 49px
+}
+
+.rating-submit:hover {
+    color: #fff
+}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT-Dashboard</title>
+    <link rel="stylesheet" href="{% static 'icon/themify-icons/themify-icons.css' %}">
+    {% block stylecss %}{% endblock %}
+
+
+</head>
+
+<body >
+    <div id="main">
+        <div id="sidebar">
+            <ul id="sidebar-menu">
+                <br><br><br>
+                <li><a href="{% url 'homePage:homePage' %}">
+                        <i class="ti-home"></i>
+                        <label>Home</label>
+                    </a></li>
+                <li><a href="{% url 'homePage:readingSite' %}">
+                        <i class="ti-book"></i>
+                        <label>Reading</label>
+                    </a></li>
+                <li><a href="{% url 'homePage:note-book' %}">
+                        <i class="ti-notepad"></i>
+                        <label>Notebook</label>
+                    </a></li>
+                <li><a href="{% url 'homePage:post' %}">
+                        <i class="ti-settings"></i>
+                        <label>Settings</label>
+                    </a></li>
+                <li><a href="{% url 'signSite:signOut' %}">
+                        <i class="ti-user"></i>
+                        <label>Log out</label>
+                    </a></li>
+            </ul>
+        </div>
+        <div id="content-layout">
+            <div id="content" >
+       {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% block jscript %}{% endblock %}
+</body>
+
+</html>

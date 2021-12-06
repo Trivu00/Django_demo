@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- thêm css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_signSite.css' %}" />
+
+    <!-- tùy chỉnh title -->
+    {% if title %}
+    <title>Reading Time - {{ title }}</title>
+    {% else %}
+    <title>Reading Time</title>
+    {% endif %}
+</head>
+
+<body>
+    <div id="main">
+        <div id="content">
+            <div id="idiom">
+                {% include "idiom4Day.html" %}
+            </div>
+            <div id="signSite">
+                {% block signSite %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

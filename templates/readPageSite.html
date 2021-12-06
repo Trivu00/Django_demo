@@ -1,0 +1,136 @@
+{% extends "base_homeSite.html" %}
+
+{% load static %}
+{% block stylecss %}
+<link rel="stylesheet" href="{% static 'css/readPageSite.css' %}">
+{% endblock stylecss %}
+
+{% block content %}
+<div id="content">
+    <div id="content-story">
+        <div>
+            <h2>{{ object_views.name }}</h2>
+        </div>
+
+        <p>{{ object_views.content_reading }}</p>
+    </div>
+    <div id="content-tab">
+        <div id="content-tab-nav">
+            <ul>
+                <button class="tablinks" onclick="openContentTap(event, 'Quest')">Quest</button>
+                <button class="tablinks" onclick="openContentTap(event, 'Vocabulary')">Vocabulary</button>
+                <button class="tablinks" onclick="openContentTap(event, 'Note')">Note</button>
+            </ul>
+        </div>
+        <div id="content-tab-body">
+            <ul id="body-idiom" class="tabcontent">
+                <div>
+                    <p class="idiom-idiom" style="font-size: 2em; font-weight: bold;">Break a leg!</p>
+                    <p class="idiom-meaning">Good luck! (an expression that is used in theater
+                        performances)</p>
+                </div>
+            </ul>
+            <ul id="Quest" class="tabcontent">
+                <li>
+                    <h1>Welcome to DataFlair Quiz</h1>
+
+                    <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+
+                    <form method='post' action=''>
+                        {% csrf_token %}
+                        {% for q in questions%}
+                        <div class="form-group">
+                            <label for="question">{{q.question}}</label>
+                        </div>
+                        <div class="form-check">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1"
+                                    value="{{q.op1}}" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    {{q.op1}}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2"
+                                    value="{{q.op2}}">
+                                <label class="form-check-label" for="gridRadios2">
+                                    {{q.op2}}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1"
+                                    value="{{q.op3}}">
+                                <label class="form-check-label" for="gridRadios1">
+                                    {{q.op3}}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2"
+                                    value="{{q.op4}}">
+                                <label class="form-check-label" for="gridRadios2">
+                                    {{q.op4}}
+                                </label>
+                            </div>
+                            <br>
+                        </div>
+                        {% endfor %}
+                        <input id='timer' type='hidden' name="timer" value="">
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {% block script %}
+                    <script>
+                        console.log('hello world')
+                        const timer = document.getElementById('displaytimer')
+                        console.log(timer.textContent)
+                        const inputtag = document.getElementById('timer')
+
+                        t = 0
+                        setInterval(() => {
+                            t += 1
+                            timer.innerHTML = "<b>Timer: " + t + " seconds</b>"
+                            inputtag.value = t
+                        }, 1000)
+                    </script>
+                    {% endblock script %}
+                </li>
+            </ul>
+            <ul id="Vocabulary" class="tabcontent">
+                <li>
+                    {% for items in vocabulary %}
+                    <p class="">{{ items.vocabulary }} : {{ items.translate }}</p>
+                    {% endfor %}
+                </li>
+            </ul>
+            <ul id="Note" class="tabcontent">
+                {% if user.username %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <p><label>Note:</label></p>
+                    <br/>
+                    <input name="note" placeholder="Note now"/>
+                </form>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block jscript %}
+<script>
+    function openContentTap(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+{% endblock jscript %}

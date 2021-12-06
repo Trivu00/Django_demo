@@ -1,0 +1,57 @@
+{% extends "base_homeSite.html" %}
+
+{% load static %}
+{% block stylecss %}
+<link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+{% endblock stylecss %}
+
+{% block content %}
+<div id="content-info">
+    <h1>Reading Time</h1>
+    <p>This is a website where you improve your reading skills through short stories</p>
+    <p>Have fun with the Reading Time</p>
+</div>
+<div id="content-top">
+    <div id="userInfo" class="content-top-item">
+        <h2>{{ request.user }}</h2>
+        <div class="item-container">
+            <div class="user-info-item">
+                <p class="p1">Course</p>
+                <p class="p2">30/100</p>
+            </div>
+            <div class="user-info-item">
+                <p class="p1">Scores</p>
+                <p class="p2">123</p>
+            </div>
+            <div class="user-info-item">
+                <p class="p1">Vocabulary</p>
+                <p class="p2">13</p>
+            </div>
+        </div>
+    </div>
+    <div id="idiom" class="content-top-item">
+        <p class="idiom-idiom">Break a leg!</p>
+        <p class="idiom-meaning">Good luck! (an expression that is used in theater
+            performances.)</p>
+    </div>
+</div>
+<div class="mt-4 container">
+    <div id="content-main " class="row">
+        {% for item in object_list %}
+        <div class="lesson col-sm-6 col-lg-4" style="margin-right: 30px;">
+            <div>
+                <a href="{% url 'homePage:readPageSite' item.id %}">
+                    <h2>{{ item.name }}</h2>
+                    <i class="">views : {{ item.views }}</i>
+                    <p>Status: unread/reading/done</p>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div id="content-bot">
+</div>
+{% endblock content %}

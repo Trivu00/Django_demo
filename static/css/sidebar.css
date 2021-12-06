@@ -1,0 +1,39 @@
+#sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    z-index: 10;
+    /* đưa thành phần sang lớp thứ 10 */
+}
+
+#sidebar:hover {
+    width: 300px;
+}
+
+#sidebar-menu>li {
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#sidebar-menu>li:hover {
+    background-color: var(--sidebar-hover-bg);
+}
+
+#sidebar-menu>li a {
+    color: var(--sidebar-font-color);
+    line-height: 60px;
+    font-size: 30px;
+    padding: 15px;
+    text-decoration: none;
+}
+
+#sidebar-menu>li label {
+    display: none;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+#sidebar:hover #sidebar-menu>li label {
+    display: inline;
+}

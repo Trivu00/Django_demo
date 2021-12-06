@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% for comment in postt %}
+    <h4><strong>{{comment.author}}</strong></h4>
+    <h6><p>{{comment.date}}</p></h6>
+    <p>{{comment.body|linebreaks}}</p>
+{% endfor %}
+
+{% if user.username %}
+    <form action="{% url 'homePage:post' %}" method="POST">
+        {% csrf_token %}
+        <p><label>Bình luận:</label></p>
+        {{form.body}}
+        <br/>
+        <input type="submit" value="Bình luận"/>
+    </form>
+{% endif %}
+
+
+</body>
+</html>
